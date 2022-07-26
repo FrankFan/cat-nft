@@ -14,9 +14,12 @@ function getEnvVariable(key, defaultValue) {
 
 // Helper method for fetching a connection provider to the Ethereum network
 function getProvider() {
-    return ethers.getDefaultProvider(getEnvVariable("NETWORK", "rinkeby"), {
-        alchemy: getEnvVariable("ALCHEMY_KEY"),
-    });
+
+    return new ethers.providers.AlchemyProvider(network = 'maticmum', getEnvVariable("POLYGON_TESTNET_API_KEY"))
+
+    // return ethers.getDefaultProvider(getEnvVariable("NETWORK"), {
+    //     alchemy: getEnvVariable("ALCHEMY_API_KEY"),
+    // });
 }
 
 // Helper method for fetching a wallet account using an environment variable for the PK
@@ -27,7 +30,7 @@ function getAccount() {
 // Helper method for fetching a contract instance at a given address
 function getContract(contractName, hre) {
     const account = getAccount();
-    return getContractAt(hre, contractName, getEnvVariable("NFT_CONTRACT_ADDRESS"), account);
+    return getContractAt(hre, contractName, getEnvVariable("CONTRACT_ADDRESS"), account);
 }
 
 module.exports = {
