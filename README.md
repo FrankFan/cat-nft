@@ -67,31 +67,31 @@ Compiled 14 Solidity files successfully
 
 # 3. deploy
 npx hardhat deploy
-Contract deployed to address: 0xd0D225E35840A2a0989cB8011846bd54d392e47D
+Contract deployed to address: 0x4746400265e6bA24F531A8D9968Bd55b8FE11365
 # 这里记得要更新 .env 中的 contract address
 
 # 4. verify
-npx hardhat verify 0x76c4DCC9bc9Dff1179c0ECAcbFf6c0f56194Ae0B
+npx hardhat verify 0x4746400265e6bA24F531A8D9968Bd55b8FE11365
 Nothing to compile
 Successfully submitted source code for contract
-contracts/FrankNFT.sol:FrankNFT at 0xd0D225E35840A2a0989cB8011846bd54d392e47D
+contracts/FrankNFT.sol:FrankNFT at 0x4746400265e6bA24F531A8D9968Bd55b8FE11365
 for verification on the block explorer. Waiting for verification result...
 
 Successfully verified contract FrankNFT on Etherscan.
-https://goerli.etherscan.io/address/0xd0D225E35840A2a0989cB8011846bd54d392e47D#code
+https://rinkeby.etherscan.io/address/0x4746400265e6bA24F531A8D9968Bd55b8FE11365#code
 
 # 5. interact with contracts，由于设置了 onlyOwner，最好使用 reade/writeContract 进行交互
-npx hardhat mint --address 0xa9Aa4613FAdA2287935CE5d6D375c28d248b5b50
+#npx hardhat mint --address 0xa9Aa4613FAdA2287935CE5d6D375c28d248b5b50
 
-npx hardhat set-base-token-uri --base-url https://bafybeigtcguu2ulkq7wqtqacw42qnbuulktq2gatsggxsuezc2y7zc7r2y.ipfs.nftstorage.link/metadata/
+# 不需要了
+#npx hardhat set-base-token-uri --base-url https://bafybeigtcguu2ulkq7wqtqacw42qnbuulktq2gatsggxsuezc2y7zc7r2y.ipfs.nftstorage.link/metadata/
 
-#Transaction Hash: 0x95523181b114bd3230f7c8a744463c577564888780239c72a48890f5eedebfde
 
-# 6. 设置token-id
-npx hardhat token-uri --token-id 1
-npx hardhat token-uri --token-id 2
+# 6. 设置token-id， 不需要了
+#npx hardhat token-uri --token-id 1
+#npx hardhat token-uri --token-id 2
 
-# 7. generate metadata
+# 7. generate metadata，只需要生成一次即可
 npx ipfs-car --pack metadata --output metadata.car
 
 npx ipfs-car --pack images --output images.car
@@ -103,7 +103,9 @@ node generate_arts/index.js
 
 # 上传到 nft.storage
 
-# 更新 setBaseTokenUri
+# 手动执行一次合约的更新 setBaseTokenUri 方法
+
+# 最后，就可以在web界面上让用户mint了
 
 ```
 

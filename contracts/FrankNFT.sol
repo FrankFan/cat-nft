@@ -17,7 +17,7 @@ contract FrankNFT is ERC721, PullPayment, Ownable {
     string public baseTokenURI;
 
     // name and symbol
-    constructor() ERC721("NFTTutorial", "FrankNFT") {}
+    constructor() ERC721("Cute Cat NFT Collectioin", "CCNC") {}
 
     function mintTo(address recipient) public payable returns (uint256) {
         uint256 tokenId = currentTokenId.current();
@@ -45,6 +45,10 @@ contract FrankNFT is ERC721, PullPayment, Ownable {
     function totalSupply() public view returns (uint256) {
         uint256 tokenId = currentTokenId.current();
         return tokenId;
+    }
+
+    function maxSupply() public pure returns (uint256) {
+        return MAX_SUPPLY;
     }
 
     /// @dev Overridden in order to make it an onlyOwner function

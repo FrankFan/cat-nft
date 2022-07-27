@@ -9,18 +9,17 @@ const { ALCHEMY_API_URL, ACCOUNT_PRIVATE_KEY, ETHERSCAN_API_KEY } = process.env;
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.8",
-  defaultNetwork: "goerli",
+  defaultNetwork: "rinkeby",
   networks: {
     hardhat: {},
-    goerli: {
+    // goerli: {
+    //   url: ALCHEMY_API_URL,
+    //   accounts: [`0x${ACCOUNT_PRIVATE_KEY}`]
+    // },
+    rinkeby: {
       url: ALCHEMY_API_URL,
       accounts: [`0x${ACCOUNT_PRIVATE_KEY}`]
     },
-    // rinkeby: {
-    //   chainId: 4,
-    //   url: `https://eth-rinkeby.alchemyapi.io/v2/${ALCHEMY_KEY}`,
-    //   accounts: [`0x${ACCOUNT_PRIVATE_KEY}`]
-    // },
     // mumbai: {
     //   url: POLYGON_TESTNET_URL,
     //   accounts: [`0x${ACCOUNT_PRIVATE_KEY}`]
