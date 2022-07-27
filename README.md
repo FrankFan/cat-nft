@@ -1,7 +1,9 @@
 # NFT Tutorial
 
 
-## hardhat 命令
+## PART1：合约
+
+### hardhat 命令
 
 ```bash
 Hardhat version 2.10.1
@@ -47,25 +49,63 @@ npx hardhat compile
 
 npx hardhat mint
 
-
-# 执行步骤
-
-# 编译合约
-➜  nft-tutorial git:(master) ✗ npx hardhat compile
-Downloading compiler 0.8.8
-Compiled 11 Solidity files successfully
-
-
-# 部署合约
-➜  nft-tutorial git:(master) ✗ npx hardhat deploy --network rinkeby
-Contract deployed to address: 0xb5aAD468ee150BB88bdB5c7E4C605b98fA0Ba2dE
-
-
-# mint NFT
-➜  nft-tutorial git:(master) ✗ npx hardhat mint --address 0xa9Aa4613FAdA2287935CE5d6D375c28d248b5b50
-Transaction Hash: 0x9d7f410b26149420100452f63b5f48492d7903d28d94be91fff8da118927ee87
+# 自定义命令
+npx hardhat check-balance
 ```
 
+
+
+## run the example 执行步骤
+
+```bash
+# 1. clean
+npx hardhat clean
+
+# 2. compile
+npx hardhat compile
+Compiled 14 Solidity files successfully
+
+# 3. deploy
+npx hardhat deploy
+Contract deployed to address: 0xd0D225E35840A2a0989cB8011846bd54d392e47D
+# 这里记得要更新 .env 中的 contract address
+
+# 4. verify
+npx hardhat verify 0x76c4DCC9bc9Dff1179c0ECAcbFf6c0f56194Ae0B
+Nothing to compile
+Successfully submitted source code for contract
+contracts/FrankNFT.sol:FrankNFT at 0xd0D225E35840A2a0989cB8011846bd54d392e47D
+for verification on the block explorer. Waiting for verification result...
+
+Successfully verified contract FrankNFT on Etherscan.
+https://goerli.etherscan.io/address/0xd0D225E35840A2a0989cB8011846bd54d392e47D#code
+
+# 5. interact with contracts，由于设置了 onlyOwner，最好使用 reade/writeContract 进行交互
+npx hardhat mint --address 0xa9Aa4613FAdA2287935CE5d6D375c28d248b5b50
+
+npx hardhat set-base-token-uri --base-url https://bafybeigtcguu2ulkq7wqtqacw42qnbuulktq2gatsggxsuezc2y7zc7r2y.ipfs.nftstorage.link/metadata/
+
+#Transaction Hash: 0x95523181b114bd3230f7c8a744463c577564888780239c72a48890f5eedebfde
+
+# 6. 设置token-id
+npx hardhat token-uri --token-id 1
+npx hardhat token-uri --token-id 2
+
+# 7. generate metadata
+npx ipfs-car --pack metadata --output metadata.car
+
+npx ipfs-car --pack images --output images.car
+
+# 生成随机图片 https://randomwordgenerator.com/picture.php
+
+# 生成 metadata
+node generate_arts/index.js
+
+# 上传到 nft.storage
+
+# 更新 setBaseTokenUri
+
+```
 
 ## 遇到的问题
 
@@ -80,44 +120,12 @@ https://segmentfault.com/a/1190000018157587
 
 原因：是etherscan本身的问题，有bug不稳定，换成polygon的测试网就好了。
 
-## run the example
-
-```bash
-# 1. clean
-npx hardhat clean
-
-# 2. compile
-npx hardhat compile
-
-# 3. deploy
-npx hardhat deploy
-Contract deployed to address: 0xe0f419F8D016FE88F82cEAeC7f34c9262890a6E7
-
-# 4. verify
-npx hardhat verify --network mumbai 0x76c4DCC9bc9Dff1179c0ECAcbFf6c0f56194Ae0B
-Nothing to compile
-Successfully submitted source code for contract
-contracts/FrankNFT.sol:FrankNFT at 0x76c4DCC9bc9Dff1179c0ECAcbFf6c0f56194Ae0B
-for verification on the block explorer. Waiting for verification result...
-
-Successfully verified contract FrankNFT on Etherscan.
-https://mumbai.polygonscan.com/address/0x76c4DCC9bc9Dff1179c0ECAcbFf6c0f56194Ae0B#code
-
-# 5. interact with contracts
-npx hardhat mint --address 0xa9Aa4613FAdA2287935CE5d6D375c28d248b5b50
-
-npx hardhat set-base-token-uri --base-url https://bafybeigtcguu2ulkq7wqtqacw42qnbuulktq2gatsggxsuezc2y7zc7r2y.ipfs.nftstorage.link/metadata/
-
-#Transaction Hash: 0x95523181b114bd3230f7c8a744463c577564888780239c72a48890f5eedebfde
-
-# 6. 设置token-id
-npx hardhat token-uri --token-id 1
-
-npx hardhat token-uri --token-id 2
-
-
-```
 
 ## docs
 
 https://docs.opensea.io/docs/4-setting-a-price-and-supply-limit-for-your-contract
+https://docs.opensea.io/docs/setting-up-your-smart-contract-project
+
+
+## PART2：metadata
+

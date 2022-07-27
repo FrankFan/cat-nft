@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/css-doodle@0.29.0/css-doodle.min.js"></script>
+    <title>Generate Arts</title>
+</head>
+
+<body>
+    <div id="root">
+        <css-doodle>
+            @grid: 100x1 / 200px;
+            @size: 5px;
+            border-radius: 50%;
+            border: 1px solid #60569e;
+
+            @place: @plot(
+            r: sin(-t/2);
+            move: 0 -.3;
+            rotate: 90;
+            );
+        </css-doodle>
+        <css-doodle>
+            :doodle {
+            @grid: 2 / 200px;
+            grid: 1px;
+            }
+            background: @pick(red, pink);
+        </css-doodle>
+
+
+        <css-doodle seed="2020">
+            :doodle {
+            @grid: 5 / 8em;
+            }
+            background: #60569e;
+            transform: scale(@rand(.2, .9));
+        </css-doodle>
+
+        <button class="btn">save</button>
+    </div>
+    <script>
+        const doodle = document.querySelector('css-doodle');
+        const button = document.querySelector('.btn');
+        console.log(doodle);
+
+
+        button.addEventListener('click', async e => {
+            let result = await doodle.export({
+                scale: 6,
+                download: true
+            });
+            /* open Dev tools to see the result */
+            console.log(result);
+        });
+    </script>
+</body>
+
+</html>

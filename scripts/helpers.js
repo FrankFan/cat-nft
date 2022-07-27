@@ -14,12 +14,11 @@ function getEnvVariable(key, defaultValue) {
 
 // Helper method for fetching a connection provider to the Ethereum network
 function getProvider() {
+    return new ethers.providers.AlchemyProvider(network = getNetwork(), getEnvVariable("ALCHEMY_API_KEY"))
+}
 
-    return new ethers.providers.AlchemyProvider(network = 'maticmum', getEnvVariable("POLYGON_TESTNET_API_KEY"))
-
-    // return ethers.getDefaultProvider(getEnvVariable("NETWORK"), {
-    //     alchemy: getEnvVariable("ALCHEMY_API_KEY"),
-    // });
+function getNetwork() {
+    return getEnvVariable("NETWORK")
 }
 
 // Helper method for fetching a wallet account using an environment variable for the PK
@@ -38,4 +37,5 @@ module.exports = {
     getProvider,
     getAccount,
     getContract,
+    getNetwork,
 }

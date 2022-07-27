@@ -6,14 +6,12 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/security/PullPayment.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-// from https://docs.opensea.io/docs/setting-up-your-smart-contract-project
 contract FrankNFT is ERC721, PullPayment, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private currentTokenId;
 
     // Constants
-    uint256 public constant TOTAL_SUPPLY = 666;
-    uint256 public constant MINT_PRICE = 0 ether;
+    uint256 public constant MAX_SUPPLY = 99;
 
     /// @dev Base token URI used as a prefix by tokenURI().
     string public baseTokenURI;
@@ -23,7 +21,7 @@ contract FrankNFT is ERC721, PullPayment, Ownable {
 
     function mintTo(address recipient) public payable returns (uint256) {
         uint256 tokenId = currentTokenId.current();
-        require(tokenId < TOTAL_SUPPLY, "Max supply reached");
+        require(tokenId < MAX_SUPPLY, "Max supply reached");
 
         currentTokenId.increment();
         uint256 newItemId = currentTokenId.current();
@@ -39,6 +37,14 @@ contract FrankNFT is ERC721, PullPayment, Ownable {
     /// @dev Sets the base token URI prefix.
     function setBaseTokenURI(string memory _baseTokenURI) public onlyOwner {
         baseTokenURI = _baseTokenURI;
+    }
+
+    /**
+     * @dev See {IERC721Enumerable-totalSupply}.
+     */
+    function totalSupply() public view returns (uint256) {
+        uint256 tokenId = currentTokenId.current();
+        return tokenId;
     }
 
     /// @dev Overridden in order to make it an onlyOwner function
