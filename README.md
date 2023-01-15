@@ -1,11 +1,25 @@
 # NFT Tutorial
 
+## development
+
+```bash
+# install deps
+yarn
+
+# install hh - short-hand for npx hardhat xxx
+npm install --global hardhat-shorthand
+
+# 安装自动完成提示功能
+hardhat-completion install
+```
 
 ## PART1：合约
 
 ### hardhat 命令
 
 ```bash
+hh --help
+
 Hardhat version 2.10.1
 
 Usage: hardhat [GLOBAL OPTIONS] <TASK> [TASK OPTIONS]
@@ -43,35 +57,33 @@ To get help for a specific task run: npx hardhat help [task]
 # ---------------------------------------------- #
 
 # 常用命令
-npx hardhat clean
+hh clean
 
-npx hardhat compile
+hh compile
 
-npx hardhat mint
+hh mint
 
 # 自定义命令
-npx hardhat check-balance
+hh check-balance
 ```
-
-
 
 ## run the example 执行步骤
 
 ```bash
 # 1. clean
-npx hardhat clean
+hh clean
 
 # 2. compile
-npx hardhat compile
+hh compile
 Compiled 14 Solidity files successfully
 
 # 3. deploy
-npx hardhat deploy
+hh deploy
 Contract deployed to address: 0x4746400265e6bA24F531A8D9968Bd55b8FE11365
 # 这里记得要更新 .env 中的 contract address
 
 # 4. verify
-npx hardhat verify 0x4746400265e6bA24F531A8D9968Bd55b8FE11365
+hh verify 0x4746400265e6bA24F531A8D9968Bd55b8FE11365
 Nothing to compile
 Successfully submitted source code for contract
 contracts/FrankNFT.sol:FrankNFT at 0x4746400265e6bA24F531A8D9968Bd55b8FE11365
@@ -102,32 +114,33 @@ npx ipfs-car --pack images --output images.car
 node generate_arts/index.js
 
 # 上传到 nft.storage
+https://bafybeicni76jef2lutviohhtv3m3tladnf3dpdduhkh3upsl7cgaoz5hmu.ipfs.nftstorage.link/metadata/
 
 # 手动执行一次合约的更新 setBaseTokenUri 方法
 
 # 最后，就可以在web界面上让用户mint了
 
+# 以上两步可以通过 Etherscan 进行
 ```
 
 ## 遇到的问题
 
 1. 执行`npx hardhat verify <address>`时，提示 `Connect Timeout Error`
 
-https://github.com/NomicFoundation/hardhat/issues/2468
-https://segmentfault.com/a/1190000018157587
+<https://github.com/NomicFoundation/hardhat/issues/2468>
+<https://segmentfault.com/a/1190000018157587>
 
-最终确定是网络问题，即使Terminal翻墙也不行。最后使用了 SecurityLink 才网络通畅了。
+最终确定是网络问题，即使Terminal翻墙也不行。最后使用了 SecureLink 才网络通畅了。
 
 2. 执行`npx hardhat verify <address>`时，提示 `Invalid Api Key`
 
 原因：是etherscan本身的问题，有bug不稳定，换成polygon的测试网就好了。
 
-
 ## docs
 
-https://docs.opensea.io/docs/4-setting-a-price-and-supply-limit-for-your-contract
-https://docs.opensea.io/docs/setting-up-your-smart-contract-project
-
+<https://docs.opensea.io/docs/4-setting-a-price-and-supply-limit-for-your-contract>
+<https://docs.opensea.io/docs/setting-up-your-smart-contract-project>
 
 ## PART2：metadata
 
+`https://bafybeicni76jef2lutviohhtv3m3tladnf3dpdduhkh3upsl7cgaoz5hmu.ipfs.nftstorage.link/metadata/`
