@@ -1,3 +1,3 @@
 # official site
 
-> cute cat nft
+> cute cat nft collection
