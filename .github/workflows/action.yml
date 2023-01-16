@@ -33,7 +33,7 @@ jobs:
         run: yarn && yarn build
 
       - name: Upload artifact
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@v1
         with:
           name: dist
           path: ./dist/
@@ -45,11 +45,11 @@ jobs:
       pages: write
       id-token: write
     environment:
-      name: github-pages
+      name: dist
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@main
         with:
-          artifact_name: github-pages
+          artifact_name: dist
