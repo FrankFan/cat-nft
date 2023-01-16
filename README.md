@@ -79,18 +79,18 @@ Compiled 14 Solidity files successfully
 
 # 3. deploy
 hh deploy
-Contract deployed to address: 0x4746400265e6bA24F531A8D9968Bd55b8FE11365
+Contract deployed to address: 0x69c579011C85D5E3c946F3ed4140FfA322FA6711
 # 这里记得要更新 .env 中的 contract address
 
 # 4. verify
-hh verify 0x4746400265e6bA24F531A8D9968Bd55b8FE11365
+hh verify 0x69c579011C85D5E3c946F3ed4140FfA322FA6711
 Nothing to compile
 Successfully submitted source code for contract
-contracts/FrankNFT.sol:FrankNFT at 0x4746400265e6bA24F531A8D9968Bd55b8FE11365
+contracts/CatNFT.sol:CatNFT at 0x69c579011C85D5E3c946F3ed4140FfA322FA6711
 for verification on the block explorer. Waiting for verification result...
 
-Successfully verified contract FrankNFT on Etherscan.
-https://rinkeby.etherscan.io/address/0x4746400265e6bA24F531A8D9968Bd55b8FE11365#code
+Successfully verified contract CatNFT on Etherscan.
+https://rinkeby.etherscan.io/address/0x69c579011C85D5E3c946F3ed4140FfA322FA6711#code
 
 # 5. interact with contracts，由于设置了 onlyOwner，最好使用 reade/writeContract 进行交互
 #npx hardhat mint --address 0xa9Aa4613FAdA2287935CE5d6D375c28d248b5b50
