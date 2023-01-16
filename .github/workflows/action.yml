@@ -6,13 +6,20 @@ on:
       - pages
 
 jobs:
-  sync:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: setup node env
+        uses: actions/setup-node@v3
         with:
           node-version: 16
+
       - name: Build Project
         run: yarn && yarn build
 
@@ -21,3 +28,7 @@ jobs:
         with:
           name: dist
           path: ./dist/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@main
