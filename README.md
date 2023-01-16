@@ -1,5 +1,9 @@
 # NFT Tutorial
 
+> [demo site](https://frankfan.github.io/cat-nft/)
+
+> [opensea testnets](https://testnets.opensea.io/zh-CN/collection/cute-cat-nft-collectioin-v2)
+
 ## development
 
 ```bash
