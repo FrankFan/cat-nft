@@ -1,0 +1,46 @@
+// common
+html,
+body,
+h1,
+h2 {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #eee;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  padding: 30px 0;
+}
+
+.mint {
+  .adm-card {
+    margin-bottom: 30px;
+  }
+
+  .count {
+    padding-bottom: 30px;
+  }
+}
+
+.mint-record {
+  .adm-card-body {
+    display: flex;
+    flex-wrap: wrap;
+
+    .img-wrap {
+      margin-bottom: 10px;
+      margin-right: 10px;
+
+      .text {
+        text-align: center;
+        font-weight: bold;
+      }
+    }
+  }
+}
